@@ -38,6 +38,32 @@ const apiMap = {
       }
     }
   },
+  '/users': () => {
+    return {
+      "code": 0,
+      "data": [
+        {
+          "id": "404",
+          "name": "Joe Doe"
+        }
+      ]
+    }
+  },
+  '/upload': () => {
+    return {
+      "code": 0,
+      "data": {
+        "create_time": 1670218748,
+        "creator_id": "404",
+        "id": "9",
+        "modifier_id": "404",
+        "modify_time": 1670328304,
+        "name": "PLG.docx",
+        "size": 7586,
+        "version": 180
+      }
+    }
+  },
   'default': () => {
     return {
       "code": 0,

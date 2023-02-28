@@ -17,7 +17,7 @@ const apiMap = {
     return {
       "code": 0,
       "data": {
-        "url": "https://xbbpro.oss-cn-zhangjiakou.aliyuncs.com/xbbProPrd/ding66041eb1c6df73f535c2f4657eb6378f/03023208291823807585/docx/16775736408073cd6ae5b57d78004482ba91d6deafc69.docx"
+        "url": "https://cdn3.xbongbong.com/xbbProPrd/ding66041eb1c6df73f535c2f4657eb6378f/03023208291823807585/docx/167758131408356c403672a9e7c77dac35c1ba4c5bfaa.docx"
       }
     }
   },

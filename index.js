@@ -68,6 +68,7 @@ const apiMap = {
     return {
       "code": 0,
       "data": {
+        "id": `${file_id.length % 10}`,
         "create_time": 1670218749,
         "creator_id": "405",
         "modify_time": Date.now(),

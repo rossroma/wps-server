@@ -1,6 +1,4 @@
 const http = require('http')
-var url = require("url");
-var querystring = require("querystring");
 
 //设置主机名
 const hostName = '127.0.0.1';
@@ -8,18 +6,14 @@ const hostName = '127.0.0.1';
 const port = 8080;
 const server = http.createServer(function(req,res){
   res.setHeader('Content-Type','text/plain');
-  const arg = url.parse(req.url).query
-  const params = querystring.parse(arg)
-  console.log(params)
-  parseUrl(req.url, res, params)
+  parseUrl(req.url, res)
 });
 server.listen(port,hostName,function(){
     console.log(`服务器运行在http://${hostName}:${port}`);
 });
 
 const apiMap = {
-  '/download': (params) => {
-    const { file_id } = params
+  '/download': (file_id) => {
     return {
       "code": 0,
       "data": {
@@ -55,8 +49,7 @@ const apiMap = {
       ]
     }
   },
-  '/upload': (params) => {
-    const { file_id } = params
+  '/upload': (file_id) => {
     return {
       "code": 0,
       "data": {
@@ -71,15 +64,12 @@ const apiMap = {
       }
     }
   },
-  'default': () => {
-    const { file_id } = params
+  'default': (file_id) => {
     return {
       "code": 0,
       "data": {
         "create_time": 1670218749,
         "creator_id": "405",
-        "id": `${file_id.length % 10}`,
-        "modifier_id": "405",
         "modify_time": Date.now(),
         "name": `${file_id}.docx`,
         "size": file_id.length,
@@ -89,15 +79,17 @@ const apiMap = {
   }
 }
 
-function parseUrl(url, res, params) {
+function parseUrl(url, res) {
+  const index = url.indexOf('files/')
+  const file_id = url.slice(index + 6).match(/[^/]+/)[0]
   let result = null
   for (const key in apiMap) {
     if (url.includes(key)) {
-      result = apiMap[key](params)
+      result = apiMap[key](file_id)
     }
   }
   if (!result && url.includes('v3/3rd')) {
-    result = apiMap.default(params)
+    result = apiMap.default(file_id)
   }
   res.writeHead(200, { 'Content-Type': 'application/json' })
   res.end(JSON.stringify(result))

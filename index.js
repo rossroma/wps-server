@@ -72,6 +72,7 @@ const apiMap = {
         "create_time": 1670218749,
         "creator_id": "405",
         "modify_time": Date.now(),
+        "modifier_id": "405",
         "name": `${file_id}.docx`,
         "size": file_id.length,
         "version": 10

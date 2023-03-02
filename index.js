@@ -28,7 +28,7 @@ const apiMap = {
         "comment": 1,
         "copy": 1,
         "download": 1,
-        "history": 1,
+        "history": 0,
         "print": 1,
         "read": 1,
         "rename": 0,

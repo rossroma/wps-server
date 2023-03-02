@@ -31,7 +31,7 @@ const apiMap = {
         "history": 1,
         "print": 1,
         "read": 1,
-        "rename": 1,
+        "rename": 0,
         "saveas": 1,
         "update": 1,
         "user_id": "405"

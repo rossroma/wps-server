@@ -6,6 +6,11 @@ const hostName = '127.0.0.1';
 const port = 8080;
 const server = http.createServer(function(req,res){
   res.setHeader('Content-Type','text/plain');
+  console.log(JSON.stringify({
+    api: req.url,
+    date: (new Date()).toISOString(),
+    client: req.headers['user-agent']
+  }))
   parseUrl(req.url, res)
 });
 server.listen(port,hostName,function(){
@@ -82,7 +87,6 @@ const apiMap = {
 }
 
 function parseUrl(url, res) {
-  console.log('api', url, (new Date()).toISOString())
   const index = url.indexOf('files/')
   const file_id = url.slice(index + 6).match(/[^/]+/)[0]
   let result = null

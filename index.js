@@ -82,6 +82,7 @@ const apiMap = {
 }
 
 function parseUrl(url, res) {
+  console.log('api', url)
   const index = url.indexOf('files/')
   const file_id = url.slice(index + 6).match(/[^/]+/)[0]
   let result = null
